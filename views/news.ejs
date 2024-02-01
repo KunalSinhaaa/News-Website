@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Website</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        img {
+            border: 2px solid gray;
+            border-radius: 5px;
+        }
+
+        .card-body:hover {
+            background-color: rgb(218, 218, 244);
+            filter: opacity(10);
+        }
+
+        button {
+            width: max-content;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="/">News Website</a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/india">India</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/sports">Sports</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/tech">Tech</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action="/new" method="post">
+                <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+        
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row">
+            <% Data.articles.forEach(function(article, index) { %>
+                <div class="col-md-4 mb-3">
+                    <div class="card"">
+                        <img src="<%- article.urlToImage %>" height="230px" width="300px" class="card-img-top"
+                            alt="<%- article.title %>">
+                        <div class="card-body">
+                            <h5 class="card-title"> <%- article.title %> </h5>
+                            <p class="card-text">By: <%- article.author %></p>
+                            <p class="card-text"> <%- article.content %> </p>
+                        </div>
+                        <button type="button" style="color: white" class="btn btn-dark"><a href="<%- article.url %>" target="_blank">read more</a></button>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
